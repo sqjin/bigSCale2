@@ -3516,7 +3516,9 @@ compute.distances = function (expr.norm, N_pct , edges, driving.genes , genes.di
  
   if (modality=='pca')
   {
-    
+    if (ncol(expr.norm) < 100) {
+        pca.components = 10
+    }
     
     print(sprintf('Using %g PCA components for %g genes and %g cells',pca.components,length(driving.genes),ncol(expr.norm)))
     if(max(expr.norm)==1)
